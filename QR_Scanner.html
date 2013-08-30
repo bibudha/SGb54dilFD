@@ -33,11 +33,11 @@
 				   alert(scanner)
 				   scanner.scan(
 				   function (result) {
-				   alert("We got a barcode\n" +
-				   "Result: " + result.text);
+				  // alert("We got a barcode\n" +
+				  // "Result: " + result.text);
 				   //"Format: " + result.format + "\n" +
 				   //"Cancelled: " + result.cancelled);
-				  // window.location.href=result.text;
+				   window.location.href=result.text;
 				   }, 
 				   function (error) {
 				   alert("Scanning failed: " + error);
