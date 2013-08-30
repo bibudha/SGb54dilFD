@@ -1189,20 +1189,17 @@ function qrCouponList()
 	if ($.isEmptyObject(html)) {
 		$('#main-content').html('Sorry we have an Empty data');
 	} else {
-		if(html.length==1){
-		$.each(html, function (i,item){  
-		
-		})
-		}else{
+			alert(html);
 			//pdf_d.html?itemId='+ item.wuFooId + '&transferId ='+ featureRelId + 'mId='+ featureId +'&touchId=' + userSiteId + '
 			// onclick="window.open('+item.urlofFile+', '_blank', 'location=yes');"
 		var htmlData = '<ul data-role="listview" data-inset="false" data-divider-theme="d" id="aboutclass">'
 			$.each(html,function(i,item){
 				//var pdf_url=;
-			htmlData += '<li><a href="qrcoupon.html?qrCode='+ item.qrCode +'&hrsCheck=' + item.hrsBeforeNextCheckIn + '&checkInTargetAmt='+item.checkInTargetAmt+'" rel="external" >' + item.name + '</a></li>';
+			htmlData += '<li><a href="QR_coupon.html?qrCode='+ item.qrCode +'&hrsCheck=' + item.hrsBeforeNextCheckIn + '&checkInTargetAmt='+item.checkInTargetAmt+'" rel="external" >' + item.couponName + '</a></li>';
 			});
 			htmlData +='</ul>';	
 		}
+	
 		
 		$('#main-content').html(htmlData);	
 		 try {
@@ -1210,7 +1207,7 @@ function qrCouponList()
 		} catch (e) {
 			$("#aboutclass").listview();
 		}
-	}
+	
 	}); 
     }
 	
