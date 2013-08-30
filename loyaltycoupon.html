@@ -31,21 +31,28 @@
     <script>
         $(document).ready(function () {
             $('.header-content .back').hide();
-
-            couponloyaltyInfo();
+            var no_of_coupon=$('#no_of_coupon').val();
+			
+            couponloyaltyInfo($('#done').val());
+			
             $("html").niceScroll();
-   
+             
 		$('#submt').click(function () {
+		
 		var secretcode=$('#secretcode').val();
 		var enteredCode=$('#enteredCode').val();
 		
 		if(secretcode==enteredCode){
 		alert('yes');
+		
 		var select=$('#done').val();
 		select++;
 		$('#done').val(select);
 		for(var i=1;i<=select;i++){
-		$('#loyalityclass #'+i).attr('class','selected loyalityimage');
+		
+		var data = ' <img src="images/005.png" id="'+i+'" height="50" width="50" class="loyalityimage"/>';
+		$('#'+i).html(data);
+		//$('#loyalityclass #'+i).html(data);
 		//alert($('#loyalityclass #'+i).attr('class'));
 		}
 		}else{
@@ -56,6 +63,7 @@
 </head>
 <body>
     <input type="hidden" id="userSiteId" value="">
+	<input type="hidden" id="no_of_coupon" value="0">
     <input type="hidden" id="lastClick" value="">
     <a id="addSteps" href="#fanwallPopup" onclick="" data-position-to="window" data-rel="popup"></a>
     <input type="hidden" id="BackSteps" value="1">
@@ -64,7 +72,7 @@
     <div data-role="page">
         <div data-role="header" role="banner" class="header-content">
               <a data-rel="back" data-role="button" data-icon="arrow-l">Back</a>
-            <h1>Artist Information</h1>
+            <h1>Loyality Tab Information</h1>
             <a href="index.html" data-icon="home" data-ajax="false" class="ui-btn-right">Home</a>
         </div>
         <!-- /header -->
@@ -74,7 +82,7 @@
 		    <div class="bg_texture-lite ui-corner-all ui-content bordertable">
         <h3 class="align-center" id="CouponName">Send Us a Photo</h3>
 		 <div  id="CouponImage"></div>
-		   <span id="barbox" style="display: inline-block;"><span id="bar" style="width: 50%;"></span></span>
+		   <span id="barbox" style="display: inline-block;"></span>
 
 		<div id="description"> 
         	Please hand your mobile device to the business representative who will stamp your loyality.
@@ -82,7 +90,7 @@
         </div>
 		 <a href="#stamp"  data-position-to="window" data-inline="true" data-rel="popup" data-role="button" >Stamp Pad</a>
         </div>
-           <div data-role="popup" id="stamp" data-overlay-theme="a" data-theme="c" class="ui-corner-all" data-dismissible="false"><div data-role="header" data-theme="b" class="ui-corner-top ui-header ui-bar-b" role="banner"><h1 class="ui-title" role="heading" aria-level="1">Secret Code</h1></div><div data-role="content" data-theme="d" class="ui-corner-bottom ui-content"><h3 class="ui-title">Please hand your mobile device to the business representative who will stamp your card.</h3><input type="text" id="enteredCode"> <fieldset class="ui-grid-a">  <div class="ui-block-a"> <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">Cancel</a></div>
+           <div data-role="popup" id="stamp" data-overlay-theme="a" data-theme="c" class="ui-corner-all" data-dismissible="false"><div data-role="header" data-theme="b" class="ui-corner-top ui-header ui-bar-b" role="banner"><h1 class="ui-title" role="heading" aria-level="1">Secret Code</h1></div><div data-role="content" data-theme="d" class="ui-corner-bottom ui-content"><h3 class="ui-title">Please hand your mobile device to the business representative who will stamp your card.</h3><input type="password" id="enteredCode"> <fieldset class="ui-grid-a">  <div class="ui-block-a"> <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">Cancel</a></div>
     <div class="ui-block-b"><a href="#" data-rel="back"  data-role="button" data-inline="true" id="submt" data-theme="c">Submit</a></div></fieldset ></div></div>
 
 
