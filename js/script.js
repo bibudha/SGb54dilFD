@@ -2403,7 +2403,6 @@ function directionViewTab() {
         getUserAppereance();
     
 }
-
 //Loyalty Tab
 function loyaltyInfo() {
 
@@ -2432,10 +2431,14 @@ function loyaltyInfo() {
               
 			  backgroundImage=item.mobileBackground;
 			  
-                data += '<li class="' + className + '"><a href="loyaltycoupon.html?touchId='+userSiteId+'&transferId='+featureRelId+'&tabid='+item.loyaltyTabId+'&mId='+featureId+'" rel="external"><h3>' + item.reward + '</h3></a></li>';
+			  
+                data += '<li class="' + className + '"><a href="loyaltycoupon.html?touchId='+userSiteId+'&transferId='+featureRelId+'&tabid='+item.loyaltyTabId+'&mId='+featureId+'" rel="external"><img src="'+baseUrl+item.imageUpload+'" class="ui-li-thumb" height="100" width="100"/><h2 class="ui-li-heading">' + item.reward + '</h2></a></li>';
+				hiddendata=item.squareCount;
             })
             data += '</ul>';
+		
             $('#main-content').html(data);
+			$('#no_of_coupon').val(hiddendata);
             try {
                 $("#loyalityclass").listview('refresh');
             } catch (e) {
@@ -2448,7 +2451,7 @@ function loyaltyInfo() {
 }
 
 //Loyalty coupon
-function couponloyaltyInfo() {
+function couponloyaltyInfo(no_of_coupon) {
 
     var featureRelId = getUrlVars()['transferId'];
     var userSiteId = getUrlVars()['touchId'];
@@ -2462,7 +2465,7 @@ function couponloyaltyInfo() {
         console.log(html);
       
         if ($.isEmptyObject(html)) {
-            $('#main-content').html('Sorry we have no data for call us tab');
+            $('#main-content').html('Sorry we have no data for loyality tab');
         } else {
             var i = 1;
            
@@ -2485,13 +2488,19 @@ function couponloyaltyInfo() {
 			
 			 for(var i=1;i<=squareCount;i++)
 			  {
-				 if(imageUpload==''){
-					  data += '<img src="images/003.png" id="'+i+'" height="50" width="50" class="loyalityimage">';
-				 }else{
-					  data += '<img src="'+imageUpload+'" id="'+i+'" height="50" width="50" class="loyalityimage">';
+				 if(no_of_coupon==0)
+				 { 
+					  data += '<div id= "'+i+'"><img src="images/003.png"  height="50" width="50" class="loyalityimage"/></div>';
+				      
+				}
+				else
+				{
+				 data += '<div id= "'+i+'"><img src="images/005.png"  height="50" width="50" class="loyalityimage"/></div>';
+				     
 				}
 			}
 			  $('#CouponImage').html(data);
+			  $('#no_of_coupon').val(squareCount);
                
            }
 		   })
@@ -2507,6 +2516,7 @@ function couponloyaltyInfo() {
         getUserAppereance();
     });
 }
+
 
 //Tip Calculator
 function tipcalcTabInfo() {
