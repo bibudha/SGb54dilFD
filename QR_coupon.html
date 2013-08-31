@@ -29,9 +29,10 @@
 		var checkInTargetAmt = getUrlVars()['checkInTargetAmt'];
 		$('.btn-text').click(function(){
 				console.log('scanning');
+				alert('coming');
 				try {
 				   var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-				   alert(scanner)
+				   alert(scanner);
 				   scanner.scan(
 				   function (result) {
 				   if(qrCode == result.text)
