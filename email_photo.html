@@ -23,12 +23,12 @@
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 
-
 <script type="text/javascript">
   document.addEventListener("deviceready",onDeviceReady,false);
   var pictureSource;   // picture source
   var destinationType; // sets the format of returned value 
   var imgSource;
+  var device_type="";
    emailPhoto();     
 
        // Cordova is ready to be used!
@@ -37,6 +37,7 @@
        
            pictureSource=navigator.camera.PictureSourceType;
            destinationType=navigator.camera.DestinationType;
+		   device_type=device.platform;
        
       // alert(destinationType);
        }
@@ -108,7 +109,7 @@
        {
 	    var emailid=EmailPhoto;
        var subject= subjectPhoto;
-	   var platform = getDevicePlateForm();
+	   var platform = device_type;
 	   if(platform == 'Android'){
 			var data="";
 			data +=' Your Image On  ( '+ src +' ) ';
@@ -147,9 +148,9 @@
    function win(r) 
    {
       
-     alert("Code = " + r.responseCode);
-     alert("Response = " + r.response);
-     alert("Sent = " + r.bytesSent);
+     //alert("Code = " + r.responseCode);
+     //alert("Response = " + r.response);
+    // alert("Sent = " + r.bytesSent);
      var upload_img_src=r.response; 
      sendMail(upload_img_src);
    }
